@@ -10,7 +10,16 @@ USERID=$(id -u)
      else
         echo "you are running with root access"
 
-    fi 
+    fi
+
+    dnf list installed mysql
+    #check if mysql is installed or not
+    if [ $? -ne 0 ]
+    then
+       echo "mysql is not installed going to install it"
+       else 
+        echo "mysql is already installed nothing to do it"
+        exit 1 
 
   dnf install mysql -y
 #we don't know if mysql is installed properly or not so we check the exit status of the last command
