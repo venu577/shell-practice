@@ -10,3 +10,4 @@ USERID=$(id -u)
         echo "you are running with root access"
 
     fi      
+dnf install mysql -y
