@@ -12,3 +12,12 @@ USERID=$(id -u)
 
     fi      
 dnf install mysql -y
+#we don't know if mysql is installed properly or not so we check the exit status of the last command
+
+if [ $? -eq 0 ]
+   then 
+      echo "installing mysql is successfull"
+   else 
+      echo "installing mysql is not successfull"
+      exit 1 
+fi 
