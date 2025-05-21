@@ -19,7 +19,8 @@ USERID=$(id -u)
        echo "mysql is not installed going to install it"
        else 
         echo "mysql is already installed nothing to do it"
-        exit 1 
+        exit 1
+        fi 
 
   dnf install mysql -y
 #we don't know if mysql is installed properly or not so we check the exit status of the last command
