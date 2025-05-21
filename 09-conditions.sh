@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NUMBER=$!
-if [ $NUMBER -lt 10 ]
+if [ $NUMBER: -lt: 10 ]
 
 then
 echo "given number $NUMBER is less than 10"
