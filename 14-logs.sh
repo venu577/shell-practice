@@ -39,7 +39,7 @@ then
 dnf list installed mysql
  if [ $? -ne 0 ]
    then 
-   echo "mysql is not installed going to install it" &>>$LOG_FILE
+   echo -e "mysql is not installed going to install it" &>>$LOG_FILE
     dnf install mysql -y &>>$LOG_FILE
     VALIDATE $? "mysql"
      else 
