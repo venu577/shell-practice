@@ -14,15 +14,15 @@ then
     echo -e "$R error: run with root access $N"
     exit 1
     else 
-    echo "you are running with root access"
+    echo -e "$G you are running with root access $N"
     fi
 
     VALIDATE(){
         if [ $1 -eq 0 ]
         then 
-         echo "installing $2 is $G successfull $N"
+         echo -e "installing $2 is $G successfull $N"
          else 
-         echo "installing $2 is $R not successfull $N"
+         echo -e "installing $2 is $R not successfull $N"
          exit 1
          fi
         }
@@ -34,7 +34,7 @@ dnf list installed mysql
     dnf install mysql -y
    VALIDATE $? "mysql"
     else 
-    echo "mysql is $Y already installed $N nothing to do"
+    echo -e "mysql is $Y already installed $N nothing to do"
     fi
 
 dnf list installed python3
@@ -44,7 +44,7 @@ if [ $? -ne 0 ]
     dnf install python3 -y
     VALIDATE $? "python3"
      else 
-     echo "python3 is $Y already installed $N nothing to do"
+     echo -e "python3 is $Y already installed $N nothing to do"
        fi
 
  dnf list installed nginx
@@ -54,7 +54,7 @@ if [ $? -ne 0 ]
    dnf install nginx -y
    VALIDATE $? "nginx"
     else
-    echo "nginx is $Y already installed $N nothing to do"
+    echo -e "nginx is $Y already installed $N nothing to do"
     fi       
 
       
