@@ -41,7 +41,7 @@ dnf list installed mysql &>>$LOG_FILE
    then 
    echo -e "mysql is not installed going to install it" &>>$LOG_FILE
     dnf install mysql -y &>>$LOG_FILE
-    VALIDATE $? "mysql"
+    VALIDATE $? "mysql" &>>$LOG_FILE
      else 
      echo -e "mysql is $Y already installed $N nothing to do" &>>$LOG_FILE
      fi
@@ -51,7 +51,7 @@ if [ $? -ne 0 ]
   then
     echo "python3 is not installed going to install it" &>>$LOG_FILE
     dnf install python3 -y &>>$LOG_FILE
-    VALIDATE $? "python3"
+    VALIDATE $? "python3" &>>$LOG_FILE
      else 
      echo -e "python3 is $Y already installed $N nothing to do" &>>$LOG_FILE
        fi
@@ -61,7 +61,7 @@ if [ $? -ne 0 ]
   then 
    echo "nginx is not installed going to install it" &>>$LOG_FILE
    dnf install nginx -y &>>$LOG_FILE
-   VALIDATE $? "nginx"
+   VALIDATE $? "nginx" &>>$LOG_FILE
     else
     echo -e "nginx is $Y already installed $N nothing to do" &>>$LOG_FILE
     fi       
