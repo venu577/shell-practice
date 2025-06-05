@@ -1,10 +1,11 @@
 #!/bin/bash
 
-counter=1
+a=1
 
-while [ $counter -le 5 ]; do
-  echo "Counter: $counter"
-  counter=$((counter + 1))
+while [ $a -le 5 ]; 
+do
+  echo "$a"
+  a=$((a + 1))
 done
 
 echo "Loop finished."
