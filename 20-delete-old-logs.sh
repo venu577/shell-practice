@@ -13,7 +13,6 @@ LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 SOURCE_DIR=/home/ec2-user/app-logs
 
 mkdir -p $LOGS_FOLDER
-echo "script started executing at: $(date)" &>>$LOG_FILE
 
 if [ $USERID -ne 0 ]
 
@@ -34,11 +33,13 @@ VALIDATE(){
     fi
 }
 
+echo "script started executing at: $(date)" &>>$LOG_FILE
+
 FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +14)
 
 while IFS= read -r filepath
 do
-  echo "deleting file: $filepath" | tee -a $LOG_FILE
+  echo "deleting file: $filepath" 
   rm -rf $filepath
 done <<< "$FILES_TO_DELETE"
 # Check if any files were deleted and <<< symbol is used to read command of own script
