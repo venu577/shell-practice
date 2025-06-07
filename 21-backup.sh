@@ -36,11 +36,40 @@ VALIDATE(){
 check_root
 mkdir -p $LOGS_FOLDER
 
+# Check if source and destination directories are provided
 USAGE(){
-    echo -e "$R USAGE: $N sh 21-backup.sh <source-directory> <destination-directory> <days>"
+    echo -e "$R USAGE: $N sh 21-backup.sh <source-directory> <destination-directory> <days(optional)>"
 }
 
 if [ $# -lt 2 ]
 then 
     USAGE  
 fi
+
+# Check if source directory and destination directory exists
+if [ ! -d $SOURCE_DIR ]
+then
+    echo -e "$R Source directory $SOURCE_DIR does not exist $N" &>>$LOG_FILE
+    exit 1
+fi
+
+if [ ! -d $DEST_DIR ]
+then
+    echo -e "$R Destination directory $DEST_DIR does not exist$N" &>>$LOG_FILE
+    exit 1
+fi
+
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
+
+# Check any files are found if exist then zip them
+if [ ! -z $FILES]
+then 
+    echo "files to zip are: $FILES"
+    TIMESTAMP=$(date +%F-%H-%M%-S)
+    ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.zip"
+    echo $FILES | zip -@ $ZIP_FILE
+
+else
+    echo -e "no log files found older than 14days"
+fi    
+
