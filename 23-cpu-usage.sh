@@ -1,8 +1,7 @@
 #!/bin/bash
 
 
-CPU_USAGE=$(top)
-
+CPU_USAGE=$(top -b -n2 | grep "Cpu(s)" | tail -1)
 CPU_THRESHOLD=1 #In projects it will be 75
 MSG=""
 IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
@@ -17,5 +16,5 @@ do
     fi
 
 done <<< $CPU_USAGE
-    echo -e $MSG
-sh mail.sh "devops team" "high cpu usage" "$IP" "$MSG" "venubonkuri1234@gmail.com" "alert cpu usage"
+  echo -e $MSG
+  sh mail.sh "devops team" "high cpu usage" $IP $MSG "venubonkuri1234@gmail.com" "alert cpu usage"
