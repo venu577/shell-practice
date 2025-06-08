@@ -7,11 +7,11 @@ IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 
 while IFS= read line
 do
-    cpu_usage=$(top -b -n2 -p 1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' -v prefix="$prefix" '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%.1f%%\n", prefix, 100 - v }')
+    USAGE=$(top -b -n2 -p 1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' -v prefix="$prefix" '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%.1f%%\n", prefix, 100 - v }')
     PARTITION=$(echo $line | awk '{print $9F}')
-    if [ $cpu_usage -ge $CPU_THRESHOLD ]
+    if [ $USAGE -ge $CPU_THRESHOLD ]
     then
-        MSG+="high CPU usage on $PARTITION: $cpu_usage % <br>"
+        MSG+="high CPU usage on $PARTITION: $USAGE % <br>"
     fi
 
 done <<< $CPU_USAGE
