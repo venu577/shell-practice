@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the threshold for CPU usage (percentage)
-THRESHOLD=1
+THRESHOLD=80
 
 # Set the email recipient
 EMAIL="your_email@example.com"
