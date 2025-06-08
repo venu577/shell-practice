@@ -14,6 +14,6 @@ do
         MSG+="high CPU usage on $PARTITION: $cpu_usage % <br>"
     fi
 
-done <<< $DISK_USAGE
+done <<< $CPU_USAGE
     echo -e $MSG
 sh mail.sh "devops team" "high cpu usage" "$IP" "$MSG" "venubonkuri1234@gmail.com" "alert disk usage"
