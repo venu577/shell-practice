@@ -10,7 +10,7 @@ EMAIL="your_email@example.com"
 CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | sed "s/.*,  \([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}')
 
 # Check if CPU usage exceeds the threshold
-if (( $(echo "$CPU_USAGE > $THRESHOLD" | bc -l) )); then
+if (( $(echo "$CPU_USAGE > $THRESHOLD") )); then
   # Get the top CPU-consuming processes
   TOP_PROCESSES=$(top -bn1 | head -n 12 | tail -n +8)
 
