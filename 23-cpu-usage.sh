@@ -17,4 +17,4 @@ do
 
 done <<< $CPU_USAGE
   echo -e $MSG
-  sh mail.sh "devops team" "high cpu usage" $IP $MSG "bonkurigeetha3@gmail.com" "alert cpu usage"
+  sh mail.sh "devops team" "high cpu usage" "$IP" "$MSG" "venubonkuri1234@gmail.com" "alert cpu usage"
